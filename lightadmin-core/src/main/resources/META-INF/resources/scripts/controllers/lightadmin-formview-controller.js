@@ -201,7 +201,13 @@ function LoadDomainEntityAction(resourceName) {
                     break;
                 case 'STRING':
                     if (editor.hasClass('wysiwyg')) {
-                        editor.wysiwyg("insertHtml", propertyValue);
+                        var tinyEditor = tinymce.get(editor.attr('id').toString());
+                        if (tinyEditor) {
+                            tinyEditor.setContent(propertyValue);
+                        }
+                        else {
+                            editor.val(propertyValue);
+                        }
                         break;
                     }
                 default:

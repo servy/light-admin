@@ -88,6 +88,7 @@ var ModalDialogController = (function () {
                     });
 
                     $(":button[name='save-changes']", $(dialog_selector)).click(function () {
+                        tinyMCE.triggerSave();
                         $(form_selector, $(dialog_selector)).submit();
                     });
 

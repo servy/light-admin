@@ -38,88 +38,18 @@ function decorateUIControls(container) {
 function formViewVisualDecoration(container) {
     decorateUIControls(container);
 
-    $('.wysiwyg', $(container)).wysiwyg({
-        iFrameClass: "wysiwyg-input",
-        removeHeadings: true,
-        controls: {
-            bold: { visible: true },
-            italic: { visible: true },
-            underline: { visible: true },
-            strikeThrough: { visible: false },
-
-            justifyLeft: { visible: true },
-            justifyCenter: { visible: true },
-            justifyRight: { visible: true },
-            justifyFull: { visible: true },
-
-            indent: { visible: true },
-            outdent: { visible: true },
-
-            subscript: { visible: false },
-            superscript: { visible: false },
-
-            undo: { visible: true },
-            redo: { visible: true },
-
-            insertOrderedList: { visible: true },
-            insertUnorderedList: { visible: true },
-            insertHorizontalRule: { visible: false },
-
-            h1: {
-                visible: true,
-                className: 'h1',
-                command: 'formatBlock',
-                arguments: '<h1>',
-                tags: ['h1'],
-                tooltip: 'Header 1'
-            },
-            h2: {
-                visible: true,
-                className: 'h2',
-                command: 'formatBlock',
-                arguments: '<h2>',
-                tags: ['h2'],
-                tooltip: 'Header 2'
-            },
-            h3: {
-                visible: true,
-                className: 'h3',
-                command: 'formatBlock',
-                arguments: '<h3>',
-                tags: ['h3'],
-                tooltip: 'Header 3'
-            },
-            h4: {
-                visible: true,
-                className: 'h4',
-                command: 'formatBlock',
-                arguments: '<h4>',
-                tags: ['h4'],
-                tooltip: 'Header 4'
-            },
-            h5: {
-                visible: true,
-                className: 'h5',
-                command: 'formatBlock',
-                arguments: '<h5>',
-                tags: ['h5'],
-                tooltip: 'Header 5'
-            },
-            h6: {
-                visible: true,
-                className: 'h6',
-                command: 'formatBlock',
-                arguments: '<h6>',
-                tags: ['h6'],
-                tooltip: 'Header 6'
-            },
-
-            cut: { visible: true },
-            copy: { visible: true },
-            paste: { visible: true },
-            html: { visible: true },
-            increaseFontSize: { visible: false },
-            decreaseFontSize: { visible: false }
-        }
+    tinymce.init({
+        selector: ".wysiwyg",
+        language: "ru",
+        menubar: "edit insert view format table tools",
+        plugins: [
+            "advlist autolink lists link charmap preview",
+            "searchreplace visualblocks code fullscreen",
+            "table contextmenu paste"
+        ],
+        style_formats: [
+            {title: 'Заголовок', block: 'h3'}
+        ],
+        toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link"
     });
 }

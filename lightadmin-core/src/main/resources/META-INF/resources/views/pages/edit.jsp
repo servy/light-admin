@@ -84,6 +84,7 @@
         });
 
         $(":button[name='save-changes']", $(domain_form)).click(function () {
+            tinyMCE.triggerSave();
             $(domain_form).submit();
         });
 
